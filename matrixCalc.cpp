@@ -16,8 +16,21 @@ class Matrix{
             }
         }
     }
-    void makeMatrix(){
-
+    void inputMatrix(){
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                cin >> calcMatrix[i][j];
+            }
+        }
+        cout << "input success\n";
+    }
+    void consoleOut(){
+        for(int itr=0;itr<row;itr++){
+            for(int secitr=0;secitr<col;secitr++){
+                printf("%6d",calcMatrix[itr][secitr]);
+            }
+            cout << "\n\n";
+        }
     }
 };
 int columnCount,rowCount;
@@ -25,11 +38,8 @@ int main (){
     cin >> columnCount;
     cin >> rowCount;
     Matrix firstMatrix(columnCount,rowCount), secondMatrix(columnCount,rowCount), answerMatrix(columnCount,rowCount);
-    for(int itr=0;itr<rowCount;itr++){
-        for(int secitr=0;secitr<columnCount;secitr++){
-            printf("%6d",answerMatrix.calcMatrix[itr][secitr]);
-        }
-        cout << "\n\n";
-    }
+    firstMatrix.inputMatrix();
+    secondMatrix.inputMatrix();
+    answerMatrix.consoleOut();
 }
 
