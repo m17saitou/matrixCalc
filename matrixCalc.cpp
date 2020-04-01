@@ -5,7 +5,7 @@ class Matrix{
     vector<vector<int>> calcMatrix;
     unsigned int col;
     unsigned int row;
-    Matrix(int co,int ro){
+    Matrix(int ro,int co){
         Matrix::col = co;
         Matrix::row = ro;
         calcMatrix.resize(row);
@@ -22,7 +22,6 @@ class Matrix{
                 cin >> calcMatrix[i][j];
             }
         }
-        cout << "input success\n";
     }
     void consoleOut(){
         for(int itr=0;itr<row;itr++){
@@ -32,14 +31,44 @@ class Matrix{
             cout << "\n\n";
         }
     }
+    static vector<vector<int>> multiplication(Matrix first,Matrix second){
+        if(first.row != second.col)throw runtime_error("Not correct matrix type!!");
+        vector<vector<int>> tmpVector;
+        tmpVector.resize(first.row);
+        int cnt = first.col;
+        for(int i=0;i<first.row;i++){
+            tmpVector.at(i).resize(second.col);
+            for(int j=0;j<second.col;j++){
+                tmpVector[i][j]=Matrix::multiplicationElement(i,j,cnt,first,second);
+            }
+        }
+        return tmpVector;
+    }
+    static int multiplicationElement(int ro, int co, int count, Matrix fir, Matrix sec){
+        vector<int> addtion;
+        for(int i=0;i<count;i++){
+            addtion.push_back(fir.calcMatrix[ro][i]*sec.calcMatrix[i][co]);
+        }
+        return accumulate(addtion.begin(),addtion.end(),0);
+    }
+
+    ~Matrix(){
+        calcMatrix.clear();
+    }
 };
-int columnCount,rowCount;
+
 int main (){
+    int columnCount,rowCount;
     cin >> columnCount;
     cin >> rowCount;
-    Matrix firstMatrix(columnCount,rowCount), secondMatrix(columnCount,rowCount), answerMatrix(columnCount,rowCount);
+    Matrix firstMatrix(rowCount,columnCount);
     firstMatrix.inputMatrix();
+    cin >> columnCount;
+    cin >> rowCount;
+    Matrix secondMatrix(rowCount,columnCount);
     secondMatrix.inputMatrix();
+    Matrix answerMatrix(firstMatrix.row,secondMatrix.col);
+    answerMatrix.calcMatrix = Matrix::multiplication(firstMatrix,secondMatrix);
     answerMatrix.consoleOut();
 }
 
