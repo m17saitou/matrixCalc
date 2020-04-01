@@ -59,12 +59,12 @@ class Matrix{
 
 int main (){
     int columnCount,rowCount;
-    cin >> columnCount;
     cin >> rowCount;
+    cin >> columnCount;
     Matrix firstMatrix(rowCount,columnCount);
     firstMatrix.inputMatrix();
-    cin >> columnCount;
     cin >> rowCount;
+    cin >> columnCount;
     Matrix secondMatrix(rowCount,columnCount);
     secondMatrix.inputMatrix();
     Matrix answerMatrix(firstMatrix.row,secondMatrix.col);
@@ -72,3 +72,12 @@ int main (){
     answerMatrix.consoleOut();
 }
 
+/*
+input file format
+
+row column
+matrix0-0 matrix0-1 ...
+matrix1-0 matrix1-1 ...
+...
+
+*/
