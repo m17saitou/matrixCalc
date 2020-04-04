@@ -26,7 +26,7 @@ class Matrix{
     void consoleOut(){
         for(int itr=0;itr<row;itr++){
             for(int secitr=0;secitr<col;secitr++){
-                printf("%6d",calcMatrix[itr][secitr]);
+                printf("%8d",calcMatrix[itr][secitr]);
             }
             cout << "\n\n";
         }
