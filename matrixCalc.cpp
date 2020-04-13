@@ -1,4 +1,8 @@
-#include <bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <numeric>
 using namespace std;
 class Matrix{
     public :
